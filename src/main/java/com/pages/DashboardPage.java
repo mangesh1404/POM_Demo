@@ -1,22 +1,34 @@
 package com.pages;
 
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class DashboardPage {
 
 	
-	WebDriver dpdriver;
+	WebDriver driver;
 	
-	public DashboardPage(WebDriver driver) {
-		dpdriver=driver;
+	@FindBy(linkText="LOGOUT")
+	private WebElement logoutBtn;
+	
+	@FindBy(xpath="//span[text()='Users']")
+	private WebElement userBtn;
+	
+	
+	public DashboardPage(WebDriver driver) {	
+	   this.driver=driver;
+	   PageFactory.initElements(driver, this);
 	}
-	private WebElement getLogoutButton() {
-		return dpdriver.findElement(By.linkText("LOGOUT"));
+	
+	public UserPage clickUserBtn() {
+		userBtn.click();
+		return new UserPage(driver);
 	}
 	
 	public void clickLogout() {
-		getLogoutButton().click();
+		logoutBtn.click();
 	}
 }

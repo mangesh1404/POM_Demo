@@ -1,8 +1,8 @@
 package com.tests;
 
-import org.openqa.selenium.By;
+
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
@@ -19,16 +19,13 @@ public class LoginTest {
 	public void setUp() {
 		driver= TestBase.initialization();
 	    lp= new LoginPage(driver);
-		dp= new DashboardPage(driver);
+		
 	}
 	
 	@Test(priority=1)
 	public void loginTestCase() {
 		
-		/*lp.enterUsername("kiran@gmail.com");
-		lp.enterPassword("123456");
-		lp.clickLoginButton();*/
-		lp.validLogin();
+		dp=lp.validLogin();
 		dp.clickLogout();
 	}
 	
@@ -36,6 +33,9 @@ public class LoginTest {
 	public void registerTest() {
 		lp.clickRegisterLink();
 	}
-	
+	@Test(priority=3)
+	public void userpageTest() {
+		dp.clickUserBtn();
+	}
 	
 }

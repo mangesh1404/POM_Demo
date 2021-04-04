@@ -42,10 +42,11 @@ public class LoginPage {
 		loginButton.click();
 	}
 	
-	public void validLogin() {
+	public DashboardPage validLogin() {
 		enterUsername("kiran@gmail.com");
 		enterPassword("123456");
 		clickLoginButton();
+		return new DashboardPage(driver);
 	}
 	
 	
